@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Scientific Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="mode-switch">
+            <button id="toggleScientific">Scientific Mode</button>
+        </div>
+        <div class="display">
+            <span id="operation"></span>
+            <input type="text" id="result" readonly>
+        </div>
+        <div class="history-wrapper">
+            <div class="history-header">
+                <span><i class="fas fa-clock"></i> Recent Calculations</span>
+                <button class="history-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="history-panel" id="history">
+                <!-- History items will be added here dynamically -->
+            </div>
+        </div>
+        <button id="toggleHistory">
+            <i class="fas fa-history"></i>
+            View History
+        </button>
+        <div class="buttons-container">
+            <div class="scientific-buttons">
+                <button class="scientific" value="square">x²</button>
+                <button class="scientific" value="sqrt">√</button>
+                <button class="scientific" value="sin">sin</button>
+                <button class="scientific" value="cos">cos</button>
+                <button class="scientific" value="pow">^</button>
+                <button class="scientific" value="log">log</button>
+                <button class="scientific" value="pi">π</button>
+                <button class="scientific" value="e">e</button>
+            </div>
+            <div class="buttons">
+                <button class="operator" value="clear">C</button>
+            <button class="operator" value="backspace">←</button>
+            <button class="operator" value="%">%</button>
+            <button class="operator" value="/">÷</button>
+            <button value="7">7</button>
+            <button value="8">8</button>
+            <button value="9">9</button>
+            <button class="operator" value="*">×</button>
+            <button value="4">4</button>
+            <button value="5">5</button>
+            <button value="6">6</button>
+            <button class="operator" value="-">-</button>
+            <button value="1">1</button>
+            <button value="2">2</button>
+            <button value="3">3</button>
+            <button class="operator" value="+">+</button>
+            <button value="0">0</button>
+            <button value=".">.</button>
+            <button class="operator" value="=">=</button>
+        </div>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html>
