@@ -33,6 +33,7 @@ class Calculator {
         this.toggleButton.addEventListener('click', () => {
             this.isScientificMode = !this.isScientificMode;
             this.scientificButtons.classList.toggle('active');
+            document.querySelector('.buttons-container').classList.toggle('scientific-active');
             this.toggleButton.textContent = this.isScientificMode ? 'Basic Mode' : 'Scientific Mode';
         });
 
@@ -57,17 +58,23 @@ class Calculator {
     handleButton(value) {
         if (this.isNumber(value)) {
             this.handleNumber(value);
-        } else if (this.isOperator(value)) {
+        } 
+        else if (this.isOperator(value)) {
             this.handleOperator(value);
-        } else if (value === '=') {
+        } 
+        else if (value === '=') {
             this.calculate();
-        } else if (value === 'clear') {
+        } 
+        else if (value === 'clear') {
             this.clear();
-        } else if (value === 'backspace') {
+        } 
+        else if (value === 'backspace') {
             this.backspace();
-        } else if (value === '.') {
+        } 
+        else if (value === '.') {
             this.addDecimal();
-        } else if (this.isScientificOperation(value)) {
+        } 
+        else if (this.isScientificOperation(value)) {
             this.handleScientificOperation(value);
         }
     }
@@ -143,7 +150,8 @@ class Calculator {
         if (this.shouldResetScreen) {
             this.currentInput = number;
             this.shouldResetScreen = false;
-        } else {
+        } 
+        else {
             this.currentInput += number;
         }
         this.updateDisplay();
@@ -174,7 +182,8 @@ class Calculator {
         if (this.operation && this.previousInput) {
             const currentValue = this.currentInput || '';
             this.operationDisplay.textContent = `${this.previousInput} ${operatorSymbols[this.operation]} ${currentValue}`;
-        } else {
+        } 
+        else {
             this.operationDisplay.textContent = '';
         }
     }
@@ -200,7 +209,7 @@ class Calculator {
                 break;
             case '/':
                 if (current === 0) {
-                    alert('Cannot divide by zero!');
+                    alert('Bir sayı sıfıra bölünemez!');
                     return;
                 }
                 computation = prev / current;
@@ -302,23 +311,31 @@ class Calculator {
     }
 
     toggleHistory() {
-        this.isHistoryOpen = !this.isHistoryOpen;
-        this.historyWrapper.classList.toggle('active');
-        
-        // Animate the toggle button
         if (this.isHistoryOpen) {
-            this.toggleHistoryBtn.style.transform = 'translateY(-10px)';
-            this.toggleHistoryBtn.innerHTML = `
-                <i class="fas fa-times"></i>
-                Close History
-            `;
-        } else {
+            // Closing animation
+            this.historyWrapper.classList.add('closing');
+            this.historyWrapper.classList.remove('active');
+            
+            setTimeout(() => {
+                this.historyWrapper.classList.remove('closing');
+            }, 300);
+            
             this.toggleHistoryBtn.style.transform = '';
             this.toggleHistoryBtn.innerHTML = `
                 <i class="fas fa-history"></i>
                 View History
             `;
+        } else {
+            // Opening
+            this.historyWrapper.classList.add('active');
+            this.toggleHistoryBtn.style.transform = 'translateY(-10px)';
+            this.toggleHistoryBtn.innerHTML = `
+                <i class="fas fa-times"></i>
+                Close History
+            `;
         }
+        
+        this.isHistoryOpen = !this.isHistoryOpen;
     }
 
     isNumber(value) {
