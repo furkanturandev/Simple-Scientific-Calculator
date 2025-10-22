@@ -154,14 +154,6 @@ The calculator includes comprehensive error handling:
 - Logarithm of zero or negative numbers
 - Invalid input detection
 
-## 📱 Browser Compatibility
-
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ Opera 76+
-
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
